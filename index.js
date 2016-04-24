@@ -10,6 +10,19 @@ app.get('/webhook/', function (req, res) {
   }
   res.send('Error, wrong validation token')
 })
+app.post('/webhook/', function (req, res) {
+  messaging_events = req.body.entry[0].messaging // มีการตอบมาหลายๆครั้ง
+  for (i = 0; i < messaging_events.length; i++) {
+    var event = req.body.entry[0].messaging[i]
+    var sender = event.sender.id // คนนี้คือใคร
+    if (event.message && event.message.text) {
+      var text = event.message.text
+      // Handle a text message from this sender
+      console.log(text)
+    }
+  }
+  res.sendStatus(200)
+})
 app.listen(app.get('port'), function () {
   console.log('Node app is running on port', app.get('port'))
 })
