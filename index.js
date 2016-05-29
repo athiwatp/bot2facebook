@@ -1,6 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
+var io = require('socket.io')
 var app = express()
 app.use(bodyParser.json())
 
@@ -11,9 +12,27 @@ var token = 'EAANmE8COUZA0BANTZBWzFamx1ZCDalrInBZBSBc3GCLQGmFCV2Hy1avC2o15Y5wAsU
 
 
 app.set('port', (process.env.PORT || 5000))
+
+
+
 app.get('/', function (req, res) {
-  res.send('Hello World!')
+  // res.send('Hello World!')
+  res.redirect('index.html')
 })
+
+io.on('connection', function(socket){
+  socket.on('message', function(msg){
+    console.log(socket.id + '> message : ' + msg)
+})
+
+
+
+
+
+
+
+
+
 app.get('/webhook/', function (req, res) {
   if (req.query['hub.verify_token'] === '1234') {
     res.send(req.query['hub.challenge'])
