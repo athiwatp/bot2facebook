@@ -56,29 +56,23 @@ app.post('/webhook/', function (req, res) {
         var num2 = parseFloat(Subtext.substring(space, Subtext.length))
         console.log('number1 : ' + num1 + ' number2 : ' + num2)
         if (num1 < num2) {
-          sendTextMessage(sender, 'max : ' + num1)
+          sendTextMessage(sender, 'min : ' + num1)
         }
         if (num2 < num1) {
-          sendTextMessage(sender, 'max : ' + num2)
+          sendTextMessage(sender, 'min : ' + num2)
         }
       }
 
       if (text.substring(0, 3) === 'avg') {
         var Subtext = text.substring(4, text.length)
-        var space = Subtext.search(' ')
+        // var space = Subtext.search(' ')
         var avg = []
-        var pass = true
-        for (var i = 0; i < Subtext.length; i++) {
-          if (pass === true) {
-            avg.push(parseFloat(Subtext.substring(0, space)))  
-            pass = false
+        var sum = 0
+        avg = gettext.split(' ')
+          for (var i = 0; i < avg.length; i++) {
+            sum += parseFloat(avg[i])
           }
-          if(pass === false){
-            avg.push(parseFloat(Subtext.substring(space, space)))
-          }
-          console.log(avg[i])
-        }
-        // var num2 = parseFloat(Subtext.substring(space, Subtext.length))
+          sendTextMessage(sender, 'avg :' + sum/avg.length)
       }
     }
   }
