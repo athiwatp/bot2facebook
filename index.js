@@ -25,7 +25,7 @@ app.post('/webhook/', function (req, res) {
       var text = event.message.text
       // Handle a text message from this sender
       console.log(sender)
-      
+
       if (text.substring(0, 3) === 'sum') {
         var Subtext = text.substring(4, text.length)
         var space = Subtext.search(' ')
@@ -62,8 +62,24 @@ app.post('/webhook/', function (req, res) {
           sendTextMessage(sender, 'max : ' + num2)
         }
       }
-      
-      
+
+      if (text.substring(0, 3) === 'avg') {
+        var Subtext = text.substring(4, text.length)
+        var space = Subtext.search(' ')
+        var avg = []
+        var pass = true
+        for (var i = 0; i < Subtext.length; i++) {
+          if (pass === true) {
+            avg.push(parseFloat(Subtext.substring(0, space)))  
+            pass = false
+          }
+          if(pass === false){
+            avg.push(parseFloat(Subtext.substring(space, space)))
+          }
+          console.log(avg[i])
+        }
+        // var num2 = parseFloat(Subtext.substring(space, Subtext.length))
+      }
     }
   }
   res.sendStatus(200)
