@@ -26,10 +26,6 @@ app.post('/webhook/', function (req, res) {
       // Handle a text message from this sender
       console.log(sender)
       
-      // if(text.substring(0,3) === 'sum'){
-      //   sendTextMessage(sender, 'Text received, echo: ' + text.split(" "))
-      //   console.log(text)
-      // }
       if (text.substring(0, 3) === 'sum') {
         var Subtext = text.substring(4, text.length)
         var space = Subtext.search(' ')
@@ -41,6 +37,19 @@ app.post('/webhook/', function (req, res) {
         sendTextMessage(sender, 'sum : ' + sum)
       }
       if (text.substring(0, 3) === 'max') {
+        var Subtext = text.substring(4, text.length)
+        var space = Subtext.search(' ')
+        var num1 = parseFloat(Subtext.substring(0, space))
+        var num2 = parseFloat(Subtext.substring(space, Subtext.length))
+        console.log('number1 : ' + num1 + ' number2 : ' + num2)
+        if (num1 > num2) {
+          sendTextMessage(sender, 'max : ' + num1)
+        }
+        if (num2 > num1) {
+          sendTextMessage(sender, 'max : ' + num2)
+        }
+      }
+      if (text.substring(0, 3) === 'min') {
         var Subtext = text.substring(4, text.length)
         var space = Subtext.search(' ')
         var num1 = parseFloat(Subtext.substring(0, space))
