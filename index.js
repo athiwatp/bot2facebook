@@ -72,6 +72,7 @@ app.post('/webhook/', function (req, res) {
           for (var i = 0; i < avg.length; i++) {
             sum += parseFloat(avg[i])
           }
+          console.log(sum/avg.length)
           sendTextMessage(sender, 'avg :' + sum/avg.length)
       }
     }
