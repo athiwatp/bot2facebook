@@ -27,7 +27,7 @@ app.post('/webhook/', function (req, res) {
       console.log(sender)
       
       if(text.substring(0,3) === 'sum'){
-        sendTextMessage(sender, 'Text received, echo: ' + text.substring(0, 200))
+        sendTextMessage(sender, 'Text received, echo: ' + text.split(" "))
         console.log(text)
       }
       // sendTextMessage(sender, 'Text received, echo: ' + text.substring(0, 200))
