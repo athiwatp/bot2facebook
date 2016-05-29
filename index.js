@@ -68,7 +68,7 @@ app.post('/webhook/', function (req, res) {
         // var space = Subtext.search(' ')
         var avg = []
         var sum = 0
-        avg = gettext.split(' ')
+        avg = Subtext.split(' ')
           for (var i = 0; i < avg.length; i++) {
             sum += parseFloat(avg[i])
           }
