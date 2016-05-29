@@ -46,13 +46,14 @@ app.post('/webhook/', function (req, res) {
         var num1 = parseFloat(Subtext.substring(0, space))
         var num2 = parseFloat(Subtext.substring(space, Subtext.length))
         console.log('number1 : ' + num1 + ' number2 : ' + num2)
-        if (num1 > num2) {
+        if (num1 < num2) {
           sendTextMessage(sender, 'max : ' + num1)
         }
-        if (num2 > num1) {
+        if (num2 < num1) {
           sendTextMessage(sender, 'max : ' + num2)
         }
       }
+      
       
     }
   }
