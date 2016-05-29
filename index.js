@@ -26,9 +26,20 @@ app.post('/webhook/', function (req, res) {
       // Handle a text message from this sender
       console.log(sender)
       
-      if(text.substring(0,3) === 'sum'){
-        sendTextMessage(sender, 'Text received, echo: ' + text.split(" "))
-        console.log(text)
+      // if(text.substring(0,3) === 'sum'){
+      //   sendTextMessage(sender, 'Text received, echo: ' + text.split(" "))
+      //   console.log(text)
+      // }
+      if (text.substring(0, 3) === 'sum') {
+        var gettext = text.substring(4, text.length)
+        console.log('number : ' + gettext)
+        var space = gettext.search(' ')
+        var num1 = parseFloat(gettext.substring(0, space))
+        var num2 = parseFloat(gettext.substring(space, gettext.length))
+        console.log('number1 : ' + num1 + ' number2 : ' + num2)
+        var sum = num1 + num2
+        console.log('sum : ' + sum)
+        sendTextMessage(sender, 'sum : ' + sum)
       }
       // sendTextMessage(sender, 'Text received, echo: ' + text.substring(0, 200))
     }
