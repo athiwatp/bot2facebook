@@ -16,8 +16,6 @@ app.set('port', (process.env.PORT || 5000))
 
 
 
-
-
 app.get('/webhook/', function (req, res) {
   if (req.query['hub.verify_token'] === '1234') {
     res.send(req.query['hub.challenge'])
@@ -39,7 +37,6 @@ app.post('/webhook/', function (req, res) {
         var space = Subtext.search(' ')
         var num1 = parseFloat(Subtext.substring(0, space))
         var num2 = parseFloat(Subtext.substring(space, Subtext.length))
-        console.log('number1 : ' + num1 + ' number2 : ' + num2)
         var sum = num1 + num2
         console.log('sum : ' + sum)
         sendTextMessage(sender, 'sum : ' + sum)
@@ -49,7 +46,6 @@ app.post('/webhook/', function (req, res) {
         var space = Subtext.search(' ')
         var num1 = parseFloat(Subtext.substring(0, space))
         var num2 = parseFloat(Subtext.substring(space, Subtext.length))
-        console.log('number1 : ' + num1 + ' number2 : ' + num2)
         if (num1 > num2) {
           sendTextMessage(sender, 'max : ' + num1)
         }
@@ -62,7 +58,6 @@ app.post('/webhook/', function (req, res) {
         var space = Subtext.search(' ')
         var num1 = parseFloat(Subtext.substring(0, space))
         var num2 = parseFloat(Subtext.substring(space, Subtext.length))
-        console.log('number1 : ' + num1 + ' number2 : ' + num2)
         if (num1 < num2) {
           sendTextMessage(sender, 'min : ' + num1)
         }
