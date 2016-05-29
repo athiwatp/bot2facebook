@@ -8,6 +8,15 @@ var token = 'EAANmE8COUZA0BANTZBWzFamx1ZCDalrInBZBSBc3GCLQGmFCV2Hy1avC2o15Y5wAsU
 
 
 
+// var http = require('http').Server(app)
+// var io = require('socket.io')(http)
+// io.on('connection', function(socket){
+//   socket.on('message', function(msg){
+//     console.log(socket.id + '> message : ' + msg)
+//   })
+// })
+
+
 
 
 app.set('port', (process.env.PORT || 5000))
