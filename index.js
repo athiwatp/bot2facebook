@@ -1,24 +1,10 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var request = require('request')
-var io = require('socket.io')
 var app = express()
 app.use(bodyParser.json())
 
 var token = 'EAANmE8COUZA0BANTZBWzFamx1ZCDalrInBZBSBc3GCLQGmFCV2Hy1avC2o15Y5wAsUjJcabADTtqnfGzL5H7C5d9w9QydxUs6yROD4OddinGDU5IvhrkqGIbqkB5HPsYBr2zKWsuMvtn17zuoQOrgzKiOouXTIbok3tV7b42TQZDZD'
-
-
-app.get('/', function(req, res){
-  res.sendfile('index.html')
-})
-
-io.on('connection', function(socket){
-  socket.on('message', function(msg){
-    console.log(socket.id + '> message : ' + msg)
-    })
-  })
-
-
 
 
 
